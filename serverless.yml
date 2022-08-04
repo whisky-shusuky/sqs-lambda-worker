@@ -74,6 +74,20 @@ functions:
       - sqs:
           arn: "sqsのarnを記載する"
           batchSize: 1
+  api:
+    name: api
+    handler: bin/api/main
+    events:
+      - http:
+          path: /sample
+          method: get
+          cors: true
+          # クエリストリングの設定
+          request:
+            parameters:
+              querystrings:
+                parameter: true
+
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
